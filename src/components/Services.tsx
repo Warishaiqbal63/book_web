@@ -61,35 +61,35 @@ const detailedServices = [
         title: "Crafting Your Manuscript",
         desc: "Whether you arrive with a rough outline or only the spark of an idea, our writers sit with your story until the voice on the page is unmistakably yours.",
         features: ["Ghostwriting — fiction & non-fiction", "Memoir & biography writing", "Children's book writing", "Story development & outlining", "Character & world building"],
-        image: "/images/Services/Book-Writing.jpg",
+        image: "/images/Book-Writing.jpg",
     },
     {
         id: "editing", label: "Editing", icon: FileText,
         title: "Perfection In Every Line",
         desc: "A manuscript is only as strong as its edit. We refine yours through careful rounds, sharpening pacing, grammar, and narrative flow without losing your voice.",
         features: ["Developmental editing", "Line & copy editing", "Proofreading", "Beta reader feedback", "Manuscript critique"],
-        image: "/images/Services/Book-Editing.jpg",
+        image: "/images/author.jpg",
     },
     {
         id: "design", label: "Design", icon: Palette,
         title: "Judged By The Cover",
         desc: "Readers do judge a book by its cover. Our designers build covers that stop the scroll and interiors that are a quiet pleasure to hold and read.",
         features: ["Custom cover design", "Interior layout & formatting", "eBook conversion (ePub / Mobi)", "Illustrations for children's books", "Author branding"],
-        image: "/images/Services/Design.webp",
+        image: "/images/Design.jpg",
     },
     {
         id: "publishing", label: "Publishing", icon: Rocket,
         title: "From Manuscript To Market",
         desc: "We carry your book through the complexities of publishing so you never have to — from registration to global distribution.",
         features: ["Self-publishing guidance", "Print & eBook distribution", "Audiobook production", "ISBN & copyright registration", "Royalty management setup"],
-        image: "/images/Services/Publishing.jpg",
+        image: "/images/book-cover.jpg",
     },
     {
         id: "marketing", label: "Marketing", icon: BarChart,
         title: "Amplify Your Reach",
         desc: "A well-told story deserves an audience. Our strategies are built to put your book in front of the readers most likely to love it.",
         features: ["Amazon listing optimization", "Author website design", "Social media campaigns", "Book launch strategy", "Press releases & PR"],
-        image: "/images/Services/Marketing.jpg",
+        image: "/images/OpenB.png",
     },
 ];
 
@@ -358,12 +358,12 @@ export default function ServicesPage() {
                                             </div>
                                         ))}
                                     </div>
-                                    <a href="#contact" className="hero-btn hero-btn-primary">
-                                        <span className="hero-btn-overlay" />
-                                        <span className="hero-btn-inner">
-                                            Get Started
-                                            <ArrowRight size={15} strokeWidth={1.6} />
-                                        </span>
+                                    <a
+                                        href="#contact"
+                                        className="font-accent inline-flex items-center gap-2 rounded-xl bg-[#8a1f1f] px-8 py-4 text-[13px] font-bold uppercase tracking-[0.1em] text-[#f4ecde] transition-all duration-300 hover:bg-[#a52a2a]"
+                                    >
+                                        Get Started
+                                        <ArrowRight size={15} strokeWidth={1.6} />
                                     </a>
                                 </div>
                             </motion.div>
@@ -456,7 +456,7 @@ export default function ServicesPage() {
             {/* ══════════════════ S6 — WHY WORDSWORTH (light) ══════════════════ */}
             <section className="relative overflow-hidden bg-[#f4ecde] py-24 lg:py-32">
                 <div className="absolute inset-0">
-                    <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
+                    <img src="/images/replace.jpg" alt="" className="h-full w-full object-cover" />
                     <div className="absolute inset-0 bg-[#f4ecde]/55" />
                 </div>
 
