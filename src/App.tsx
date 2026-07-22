@@ -6,7 +6,10 @@ import Navbar from "./components/Navbar"
 import OurCraft from "./components/Ourcraft"
 import Portfolio from "./components/Portfolio"
 import QuoteBanner from "./components/Quotebanner"
+import Faq from "./components/Faq"
 import './index.css'
+import Footer from "./components/Footer"
+import CTASection from "./components/Cta"
 
 function App() {
 
@@ -19,7 +22,10 @@ function App() {
       <LegacyStats />
       <Portfolio />
       <QuoteBanner />
+      <CTASection />
       <Contact />
+      <Faq/>
+      <Footer />
     </>
   )
 }
