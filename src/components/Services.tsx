@@ -156,6 +156,17 @@ function openLiveChat() {
 
 /* ────────────────────────────────────────────────────────────
    Page
+   Section rhythm (strict alternation, no two same-tone sections
+   back to back):
+   1 Hero            — dark
+   2 Core Services    — light
+   3 Service Showcase — dark  (Black-bg.jpg)
+   4 Genres           — light
+   5 Journey          — dark
+   6 Why Wordsworth   — light
+   7 Packages         — dark
+   8 FAQs             — light
+   9 CTA              — dark  (standard Craft-bg.png pattern)
 ──────────────────────────────────────────────────────────── */
 export default function ServicesPage() {
     const shouldReduceMotion = useReducedMotion();
@@ -172,7 +183,7 @@ export default function ServicesPage() {
 
     return (
         <main id="services" className="w-full overflow-hidden bg-[#090807]">
-            {/* ══════════════════ S1 — HERO ══════════════════ */}
+            {/* ══════════════════ S1 — HERO (dark) ══════════════════ */}
             <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#090807] px-6 py-24 text-center">
                 <div className="absolute inset-0">
                     <img src="/images/Craft-bg.png" alt="" className="h-full w-full object-cover" />
@@ -227,7 +238,7 @@ export default function ServicesPage() {
                 </motion.div>
             </section>
 
-            {/* ══════════════════ S2 — CORE SERVICES ══════════════════ */}
+            {/* ══════════════════ S2 — CORE SERVICES (light) ══════════════════ */}
             <section ref={coreRef} className="relative overflow-hidden bg-[#f4ecde] py-24 lg:py-32">
                 <div className="absolute inset-0">
                     <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
@@ -283,10 +294,10 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* ══════════════════ S3 — SERVICE SHOWCASE ══════════════════ */}
+            {/* ══════════════════ S3 — SERVICE SHOWCASE (dark, Black-bg.jpg) ══════════════════ */}
             <section className="relative overflow-hidden bg-[#090807] py-24 lg:py-32">
                 <div className="absolute inset-0">
-                    <img src="/images/Craft-bg.png" alt="" className="h-full w-full object-cover" />
+                    <img src="/images/Black-bg.jpg" alt="" className="h-full w-full object-cover" />
                     <div className="absolute inset-0 bg-[#090807]/45" />
                 </div>
                 <div className="pointer-events-none absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(#fff 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
@@ -361,7 +372,7 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* ══════════════════ S4 — GENRES ══════════════════ */}
+            {/* ══════════════════ S4 — GENRES (light) ══════════════════ */}
             <section className="relative overflow-hidden bg-[#f4ecde] py-24 lg:py-32">
                 <div className="absolute inset-0">
                     <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
@@ -403,7 +414,7 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* ══════════════════ S5 — JOURNEY ══════════════════ */}
+            {/* ══════════════════ S5 — JOURNEY (dark) ══════════════════ */}
             <section className="relative overflow-hidden bg-[#111] py-24 lg:py-32">
                 <div className="absolute inset-0">
                     <img src="/images/Craft-bg.png" alt="" className="h-full w-full object-cover" />
@@ -442,13 +453,12 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* ══════════════════ S6 — WHY WORDSWORTH ══════════════════ */}
-            <section className="relative overflow-hidden bg-[#090807] py-24 lg:py-32">
+            {/* ══════════════════ S6 — WHY WORDSWORTH (light) ══════════════════ */}
+            <section className="relative overflow-hidden bg-[#f4ecde] py-24 lg:py-32">
                 <div className="absolute inset-0">
-                    <img src="/images/Craft-bg.png" alt="" className="h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-[#090807]/45" />
+                    <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-[#f4ecde]/55" />
                 </div>
-                <div className="pointer-events-none absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(#fff 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
 
                 <motion.div
                     initial="hidden"
@@ -461,10 +471,10 @@ export default function ServicesPage() {
                         <motion.div variants={fadeUp}>
                             <GoldDivider label="Why Wordsworth" align="left" />
                         </motion.div>
-                        <motion.h2 variants={fadeUp} className="font-accent mb-10 text-[clamp(1.7rem,3.4vw,2.8rem)] leading-[1.06] text-[#f4ecde]">
+                        <motion.h2 variants={fadeUp} className="font-accent mb-10 text-[clamp(1.7rem,3.4vw,2.8rem)] leading-[1.06] text-[#241408]">
                             Built For Authors.
                             <br />
-                            <span className="text-[#c59d4d]">Devoted To The Craft.</span>
+                            <span className="text-[#5b1818]">Devoted To The Craft.</span>
                         </motion.h2>
 
                         <motion.div variants={container} className="flex flex-col gap-7">
@@ -474,12 +484,12 @@ export default function ServicesPage() {
                                 { t: "100% Money-Back Guarantee", d: "We stand firmly behind our work. If you're ever not satisfied, we'll refund you in full — no questions asked." },
                             ].map(({ t, d }) => (
                                 <motion.div key={t} variants={fadeUp} className="group flex items-start gap-4">
-                                    <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#c59d4d]/10 transition-colors duration-300 group-hover:bg-[#c59d4d]">
-                                        <CheckCircle2 size={13} className="text-[#c59d4d] transition-colors duration-300 group-hover:text-[#090807]" strokeWidth={1.8} />
+                                    <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#5b1818]/10 transition-colors duration-300 group-hover:bg-[#5b1818]">
+                                        <CheckCircle2 size={13} className="text-[#5b1818] transition-colors duration-300 group-hover:text-[#f4ecde]" strokeWidth={1.8} />
                                     </div>
                                     <div>
-                                        <h4 className="font-accent mb-1.5 text-[15px] font-bold uppercase tracking-[0.04em] text-[#f4ecde]">{t}</h4>
-                                        <p className="font-body text-[14px] leading-[1.75] text-[#efe6d8]/60">{d}</p>
+                                        <h4 className="font-accent mb-1.5 text-[15px] font-bold uppercase tracking-[0.04em] text-[#241408]">{t}</h4>
+                                        <p className="font-body text-[14px] leading-[1.75] text-[#241408]/70">{d}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -491,7 +501,7 @@ export default function ServicesPage() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.9, ease: smoothEase }}
-                        className="relative aspect-square overflow-hidden rounded-2xl shadow-[0_24px_64px_rgba(0,0,0,0.4)]"
+                        className="relative aspect-square overflow-hidden rounded-2xl shadow-[0_24px_64px_rgba(36,20,8,0.2)]"
                     >
                         <img
                             src="/images/Services/Services-3.png"
@@ -505,19 +515,19 @@ export default function ServicesPage() {
                 </motion.div>
             </section>
 
-            {/* ══════════════════ S7 — PACKAGES ══════════════════ */}
-            <section className="relative overflow-hidden bg-[#f4ecde] py-24 lg:py-32">
+            {/* ══════════════════ S7 — PACKAGES (dark) ══════════════════ */}
+            <section className="relative overflow-hidden bg-[#090807] py-24 lg:py-32">
                 <div className="absolute inset-0">
-                    <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-[#f4ecde]/55" />
+                    <img src="/images/Craft-bg.png" alt="" className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-[#090807]/45" />
                 </div>
                 <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-10">
                     <div className="mb-20 text-center">
                         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                             <GoldDivider label="Investment" />
                         </motion.div>
-                        <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-accent text-[clamp(1.9rem,4.2vw,3.4rem)] leading-[1.02] tracking-[-0.01em] text-[#241408]">
-                            Choose Your <span className="text-[#5b1818]">Path</span>
+                        <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-accent text-[clamp(1.9rem,4.2vw,3.4rem)] leading-[1.02] tracking-[-0.01em] text-[#f4ecde]">
+                            Choose Your <span className="text-[#c59d4d]">Path</span>
                         </motion.h2>
                     </div>
 
@@ -533,8 +543,8 @@ export default function ServicesPage() {
                                 key={title}
                                 variants={fadeUp}
                                 className={`relative rounded-2xl p-10 transition-all duration-500 ${highlight
-                                        ? "z-10 border-2 border-[#c59d4d] bg-[#090807] text-[#f4ecde] shadow-[0_32px_80px_rgba(0,0,0,0.3)] lg:scale-105"
-                                        : "border border-[#241408]/10 bg-white/60 text-[#241408] hover:border-[#c59d4d]/40 hover:shadow-[0_20px_48px_rgba(36,20,8,0.1)]"
+                                        ? "z-10 border-2 border-[#c59d4d] bg-[#14100c] text-[#f4ecde] shadow-[0_32px_80px_rgba(0,0,0,0.5)] lg:scale-105"
+                                        : "border border-white/10 bg-white/5 text-[#f4ecde] hover:border-[#c59d4d]/40 hover:bg-white/10"
                                     }`}
                             >
                                 {highlight && (
@@ -543,7 +553,7 @@ export default function ServicesPage() {
                                     </span>
                                 )}
                                 <h3 className="font-accent mb-2 text-[19px] font-bold uppercase tracking-[0.05em]">{title}</h3>
-                                <p className={`font-body mb-6 text-[13px] ${highlight ? "text-[#efe6d8]/60" : "text-[#241408]/60"}`}>{desc}</p>
+                                <p className="font-body mb-6 text-[13px] text-[#efe6d8]/60">{desc}</p>
                                 <div className="font-accent mb-8 text-[44px] font-bold leading-none">
                                     {price}
                                     {price !== "Custom" && <span className="ml-1 text-[12px] font-normal opacity-50">one-time</span>}
@@ -560,7 +570,7 @@ export default function ServicesPage() {
                                     href="#contact"
                                     className={`font-accent block w-full rounded-xl border-2 py-4 text-center text-[12px] font-bold uppercase tracking-[0.1em] transition-all duration-300 ${highlight
                                             ? "border-[#c59d4d] bg-[#c59d4d] text-[#090807] hover:bg-transparent hover:text-[#c59d4d]"
-                                            : "border-[#241408] text-[#241408] hover:border-[#c59d4d] hover:bg-[#c59d4d] hover:text-[#090807]"
+                                            : "border-[#efe6d8]/30 text-[#f4ecde] hover:border-[#c59d4d] hover:bg-[#c59d4d] hover:text-[#090807]"
                                         }`}
                                 >
                                     Get Started
@@ -571,7 +581,7 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* ══════════════════ S8 — FAQs ══════════════════ */}
+            {/* ══════════════════ S8 — FAQs (light) ══════════════════ */}
             <section className="relative overflow-hidden bg-[#f4ecde] py-24 lg:py-32">
                 <div className="absolute inset-0">
                     <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
@@ -625,35 +635,37 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-{/* ══════════════════ S9 — CTA ══════════════════ */}
-<section className="relative overflow-hidden bg-cover bg-center bg-no-repeat py-24 lg:py-28" style={{ backgroundImage: "url('/images/Black-bg.jpg')" }}>
-    {/* Subtle Dark Overlay (optional, agar image zyada bright ho) */}
-    <div className="absolute inset-0 bg-black/40" />
+            {/* ══════════════════ S9 — CTA (dark, standard pattern) ══════════════════ */}
+            <section className="relative overflow-hidden bg-[#090807] py-24 lg:py-28">
+                <div className="absolute inset-0">
+                    <img src="/images/Craft-bg.png" alt="" className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-[#090807]/45" />
+                </div>
 
-    <motion.div
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: smoothEase }}
-        className="relative z-10 mx-auto max-w-3xl px-6 text-center sm:px-10"
-    >
-        <h2 className="font-accent mb-5 text-[clamp(1.8rem,4.4vw,3.2rem)] leading-[1.08] text-[#f4ecde]">
-            Not Sure Which Service You Need?
-        </h2>
-        <p className="font-body mx-auto mb-10 max-w-[520px] text-[16px] leading-[1.7] text-[#f4ecde]/80">
-            Speak with one of our publishing consultants — we'll map out the
-            right path for your book, at no cost.
-        </p>
-        <button
-            type="button"
-            onClick={openLiveChat}
-            className="font-accent inline-flex items-center gap-3 rounded-xl bg-[#c59d4d] px-9 py-5 text-[13px] font-bold uppercase tracking-[0.1em] text-[#090807] transition-all duration-300 hover:bg-[#d8b05f]"
-        >
-            <MessageCircle size={16} strokeWidth={1.6} />
-            Book A Free Consultation
-        </button>
-    </motion.div>
-</section>
+                <motion.div
+                    initial={{ opacity: 0, y: 32 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: smoothEase }}
+                    className="relative z-10 mx-auto max-w-3xl px-6 text-center sm:px-10"
+                >
+                    <h2 className="font-accent mb-5 text-[clamp(1.8rem,4.4vw,3.2rem)] leading-[1.08] text-[#f4ecde]">
+                        Not Sure Which Service You Need?
+                    </h2>
+                    <p className="font-body mx-auto mb-10 max-w-[520px] text-[16px] leading-[1.7] text-[#f4ecde]/80">
+                        Speak with one of our publishing consultants — we'll map out the
+                        right path for your book, at no cost.
+                    </p>
+                    <button
+                        type="button"
+                        onClick={openLiveChat}
+                        className="font-accent inline-flex items-center gap-3 rounded-xl bg-[#c59d4d] px-9 py-5 text-[13px] font-bold uppercase tracking-[0.1em] text-[#090807] transition-all duration-300 hover:bg-[#d8b05f]"
+                    >
+                        <MessageCircle size={16} strokeWidth={1.6} />
+                        Book A Free Consultation
+                    </button>
+                </motion.div>
+            </section>
         </main>
     );
 }
