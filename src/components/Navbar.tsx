@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Link } from "react-router-dom"; // React Router Link import kiya
 import { Phone, Mail, Menu, ChevronDown, ChevronRight, X } from "lucide-react";
 
 const servicesMenu = [
@@ -126,7 +127,7 @@ export default function Navbar() {
             </div>
 
             <nav className="flex h-[86px] items-center justify-between px-4 sm:h-[96px] sm:px-8 lg:h-[112px] xl:h-[124px] xl:px-10">
-                <a href="/" className="flex h-full shrink-0 items-center gap-3 sm:gap-4">
+                <Link to="/" className="flex h-full shrink-0 items-center gap-3 sm:gap-4">
                     <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-gold font-accent text-2xl text-gold sm:h-16 sm:w-16 sm:text-3xl lg:h-[76px] lg:w-[76px] lg:text-[34px] xl:h-[86px] xl:w-[86px] xl:text-[38px]">
                         W
                     </span>
@@ -138,7 +139,7 @@ export default function Navbar() {
                             PUBLISHING
                         </span>
                     </span>
-                </a>
+                </Link>
 
                 <ul className="hidden items-center lg:flex">
                     {navItems.map((item) => {
@@ -150,8 +151,8 @@ export default function Navbar() {
                                     onMouseEnter={handleServicesEnter}
                                     onMouseLeave={handleServicesLeave}
                                 >
-                                    <a
-                                        href="/services"
+                                    <Link
+                                        to="/services"
                                         className="flex items-center gap-1.5 px-4 py-2 font-body text-[17px] font-semibold text-parchment transition-colors duration-300 hover:text-gold xl:text-[18px]"
                                     >
                                         Services
@@ -160,7 +161,7 @@ export default function Navbar() {
                                             className={`text-gold/50 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""
                                                 }`}
                                         />
-                                    </a>
+                                    </Link>
 
                                     <AnimatePresence>
                                         {servicesOpen && (
@@ -214,13 +215,13 @@ export default function Navbar() {
                                                         >
                                                             {activeLinks.map((link) => (
                                                                 <li key={link}>
-                                                                    <a
-                                                                        href={`/InnerServices/${slugify(link)}`}
+                                                                    <Link
+                                                                        to={`/InnerServices/${slugify(link)}`}
                                                                         className="group flex items-center gap-2 rounded px-2 py-1.5 font-body text-[13px] text-parchment/75 transition-colors hover:bg-parchment/5 hover:text-gold"
                                                                     >
                                                                         <span className="h-1 w-1 shrink-0 rounded-full bg-gold opacity-0 transition-opacity group-hover:opacity-100" />
                                                                         {link}
-                                                                    </a>
+                                                                    </Link>
                                                                 </li>
                                                             ))}
                                                         </motion.ul>
@@ -235,12 +236,12 @@ export default function Navbar() {
 
                         return (
                             <li key={item.label}>
-                                <a
-                                    href={item.href}
+                                <Link
+                                    to={item.href}
                                     className="flex items-center px-4 py-2 font-body text-[17px] font-semibold text-parchment transition-colors duration-300 hover:text-gold xl:text-[18px]"
                                 >
                                     {item.label}
-                                </a>
+                                </Link>
                             </li>
                         );
                     })}
@@ -274,13 +275,13 @@ export default function Navbar() {
                                     return (
                                         <li key="Services">
                                             <div className="flex items-center border-b border-parchment/5">
-                                                <a
-                                                    href="/services"
+                                                <Link
+                                                    to="/services"
                                                     className="flex-1 px-3 py-3 text-left font-body text-[14px] font-semibold text-parchment/85 transition-colors hover:text-gold"
                                                     onClick={() => setMobileOpen(false)}
                                                 >
                                                     Services
-                                                </a>
+                                                </Link>
                                                 <button
                                                     className="p-3 text-gold/50 transition-colors hover:text-gold"
                                                     onClick={() => setMobileServicesOpen((v) => !v)}
@@ -329,13 +330,13 @@ export default function Navbar() {
                                                                         >
                                                                             {srv.links.map((link) => (
                                                                                 <li key={link}>
-                                                                                    <a
-                                                                                        href={`/InnerServices/${slugify(link)}`}
+                                                                                    <Link
+                                                                                        to={`/InnerServices/${slugify(link)}`}
                                                                                         className="block px-3 py-2 font-body text-[12px] text-parchment/50 transition-colors hover:text-gold"
                                                                                         onClick={() => setMobileOpen(false)}
                                                                                     >
                                                                                         {link}
-                                                                                    </a>
+                                                                                    </Link>
                                                                                 </li>
                                                                             ))}
                                                                         </motion.ul>
@@ -351,13 +352,13 @@ export default function Navbar() {
                                 }
                                 return (
                                     <li key={item.label}>
-                                        <a
-                                            href={item.href}
+                                        <Link
+                                            to={item.href}
                                             className="block border-b border-parchment/5 px-3 py-3 font-body text-[14px] font-semibold text-parchment/85 transition-colors hover:text-gold"
                                             onClick={() => setMobileOpen(false)}
                                         >
                                             {item.label}
-                                        </a>
+                                        </Link>
                                     </li>
                                 );
                             })}
