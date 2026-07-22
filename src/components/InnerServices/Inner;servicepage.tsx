@@ -1,6 +1,6 @@
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { getInnerServiceBySlug } from "./Innerservicesdata";
-import InnerServiceTemplate from "./innerservicetemplate";
+import InnerServiceTemplate from "./Innerservicetemplate";
 
 export default function InnerServicePage() {
     const { slug } = useParams<{ slug: string }>();
