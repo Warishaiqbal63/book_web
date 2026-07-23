@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence, useReducedMotion, type Variants } from "motion/react";
 import {
     X, ArrowRight, PenTool, Palette, BarChart, BookOpen,
-    Sparkles, Mic, Globe, Clock,
+    Sparkles, Mic, Clock,
 } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
@@ -149,9 +149,7 @@ const posts: {
         excerpt: "Fantasy asks more of a writer than almost any genre: an entire world built from scratch, with rules internal logic has to respect all the way through.",
         body: "The strongest fantasy worlds establish their geography, power systems, and politics early, then weave those details into the story organically through character experience rather than long standalone passages of exposition. Consistency is the real test: a magic system's rules have to hold up across the full length of the story, or readers stop trusting the stakes. And no amount of inventive world-building matters if the people living in that world aren't grounded and believable enough to make a reader want to stay.",
     },
-]
-
-;
+];
 
 const categories: ("All" | Category)[] = [
     "All", "Editing & Craft", "Cover & Design", "Marketing & Growth", "Publishing Path", "Genre Spotlight", "Author Life",
@@ -192,7 +190,6 @@ function BlogCard({ post, onOpen }: { post: (typeof posts)[number]; onOpen: () =
                 }}
                 className="relative flex h-full flex-col overflow-hidden rounded-md p-7 shadow-[0_18px_40px_rgba(9,8,7,0.35)] ring-1 ring-white/10 transition-shadow duration-300 group-hover:shadow-[0_28px_60px_rgba(9,8,7,0.55)]"
             >
-                {/* corner ornament */}
                 <svg className="absolute right-5 top-5 opacity-70" width="16" height="16" viewBox="0 0 24 24" fill="#c59d4d">
                     <path d="M12 2 14.6 9.4 22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z" />
                 </svg>
@@ -222,7 +219,6 @@ function BlogCard({ post, onOpen }: { post: (typeof posts)[number]; onOpen: () =
                     </span>
                 </div>
 
-                {/* hover sheen */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/0 via-white/0 to-white/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </motion.div>
         </motion.button>
@@ -249,7 +245,6 @@ export default function BlogPage() {
 
     return (
         <main className="w-full overflow-hidden bg-[#090807]">
-            {/* ══════════════════ S1 — HERO (dark) ══════════════════ */}
             <section className="relative flex min-h-[60svh] items-center justify-center overflow-hidden bg-[#090807] px-6 py-24 text-center">
                 <div className="absolute inset-0">
                     <img src="/images/Craft-bg.png" alt="" className="h-full w-full object-cover" />
@@ -287,7 +282,6 @@ export default function BlogPage() {
                 </motion.div>
             </section>
 
-            {/* ══════════════════ S2 — FILTERABLE BLOG GRID (light) ══════════════════ */}
             <section className="relative overflow-hidden bg-[#f4ecde] py-24 lg:py-32">
                 <div className="absolute inset-0">
                     <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
@@ -303,7 +297,6 @@ export default function BlogPage() {
                         </motion.h2>
                     </div>
 
-                    {/* Category filter tabs */}
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
@@ -330,7 +323,6 @@ export default function BlogPage() {
                         })}
                     </motion.div>
 
-                    {/* Grid */}
                     <motion.div layout className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         <AnimatePresence mode="popLayout">
                             {filtered.map((post) => (
@@ -350,7 +342,6 @@ export default function BlogPage() {
                 </div>
             </section>
 
-            {/* ══════════════════ S3 — NEWSLETTER (dark) ══════════════════ */}
             <section className="relative overflow-hidden bg-[#090807] py-24 lg:py-28">
                 <div className="absolute inset-0">
                     <img src="/images/Black-bg.jpg" alt="" className="h-full w-full object-cover" />
@@ -399,7 +390,6 @@ export default function BlogPage() {
                 </motion.div>
             </section>
 
-            {/* ══════════════════ S4 — CLOSING CTA (light) ══════════════════ */}
             <section className="relative overflow-hidden bg-[#f4ecde] py-24 lg:py-28">
                 <div className="absolute inset-0">
                     <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
@@ -431,7 +421,6 @@ export default function BlogPage() {
                 </motion.div>
             </section>
 
-            {/* ══════════════════ BLOG POST MODAL ══════════════════ */}
             <AnimatePresence>
                 {openPost && (
                     <motion.div
