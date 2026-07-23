@@ -53,7 +53,7 @@ export default function Hero() {
             <div className="absolute inset-0">
                 <img
                     src="/images/hero-bg.png"
-                    alt="Wordsworth Library"
+                    alt="OakMont Publications Library"
                     className="absolute inset-0 h-full w-full object-cover object-center lg:object-[60%_center]"
                 />
 
@@ -81,7 +81,7 @@ export default function Hero() {
                 </svg>
 
                 <span className="font-accent uppercase tracking-[0.34em] text-[11px] text-[#c59d4d] [writing-mode:vertical-rl]">
-                    STORIES THAT LIVE BEYOND TIME
+                    EVERY MANUSCRIPT IS A MASTERPIECE
                 </span>
             </motion.div>
 
@@ -124,11 +124,11 @@ export default function Hero() {
                     className="font-accent leading-[0.9] text-[#f4ecde]"
                 >
                     <span className="block text-[clamp(2.25rem,8vw,7.625rem)] tracking-[-0.02em] min-[1920px]:text-[8.5rem] min-[2260px]:text-[9.25rem]">
-                        Timeless Stories
+                        Great Stories
                     </span>
 
                     <span className="mt-4 block text-[clamp(1.5rem,5vw,4.625rem)] leading-none tracking-[-0.01em] sm:mt-6 lg:mt-8 lg:ml-20 xl:ml-28 2xl:ml-35 min-[1920px]:text-[5.25rem] min-[2260px]:text-[5.75rem]">
-                        Find Their Voice.
+                        Find Their Shelf.
                     </span>
                 </motion.h1>
 
@@ -156,9 +156,10 @@ export default function Hero() {
                     variants={fadeUp}
                     className="mx-auto max-w-[90%] text-[clamp(0.95rem,2.2vw,1.2rem)] leading-[1.85] text-[#efe6d8] sm:max-w-[520px] lg:mx-0 lg:ml-30 lg:max-w-[560px] lg:leading-[2.05]"
                 >
-                    Rooted in the rich literary traditions of Old London,
-                    Wordsworth Publishing helps authors turn their ideas into
-                    books that inspire generations.
+                    First-time author or seasoned pro, OakMont Publications
+                    gives your story the professional treatment it deserves —
+                    sharp editing, standout cover design, wide distribution,
+                    and marketing that actually gets you noticed.
                 </motion.p>
 
 

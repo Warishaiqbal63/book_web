@@ -1,257 +1,411 @@
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
+import { Heart, Award, Users, Clock, ShieldCheck, Zap, Quote } from "lucide-react";
 
-// ── Animation variants (mirrors Hero's rhythm for site-wide consistency) ────
-const container = {
+/* ------------------------------------------------------------------ */
+/*  Motion variants — same rhythm used across Hero, About, Navservices */
+/* ------------------------------------------------------------------ */
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const container: Variants = {
     hidden: {},
-    visible: {
-        transition: { staggerChildren: 0.15, delayChildren: 0.1 },
-    },
+    visible: { transition: { staggerChildren: 0.13, delayChildren: 0.12 } },
 };
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 26 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
-    },
+const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease } },
 };
 
-const grainSVG = `
-<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'>
-  <filter id='n'>
-    <feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/>
-    <feColorMatrix type='matrix' values='0 0 0 0 0.28  0 0 0 0 0.2  0 0 0 0 0.12  0 0 0 0.55 0'/>
-  </filter>
-  <rect width='100%' height='100%' filter='url(%23n)'/>
-</svg>`;
-const grainDataUri = `url("data:image/svg+xml,${encodeURIComponent(grainSVG)}")`;
+const fadeIn: Variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1, delay: 0.1 } },
+};
 
-const tornDeep =
-    "polygon(0% 14px,5% 19px,10% 13px,15% 18px,20% 14px,25% 20px,30% 15px,35% 19px,40% 14px,45% 18px,50% 15px,55% 19px,60% 14px,65% 18px,70% 15px,75% 20px,80% 14px,85% 18px,90% 13px,95% 19px,100% 14px,100% 100%,0% 100%)";
+/* ------------------------------------------------------------------ */
+/*  Data                                                               */
+/* ------------------------------------------------------------------ */
 
-const tornShallow =
-    "polygon(0% 8px,5% 12px,10% 7px,15% 11px,20% 8px,25% 13px,30% 9px,35% 12px,40% 8px,45% 11px,50% 9px,55% 12px,60% 8px,65% 11px,70% 9px,75% 13px,80% 8px,85% 11px,90% 7px,95% 12px,100% 8px,100% 50px,0% 50px)";
-
-const charBackingClip =
-    "polygon(6% 0%,18% 2%,34% 0%,50% 3%,68% 0%,84% 3%,100% 0%,97% 14%,100% 30%,96% 46%,100% 62%,95% 78%,100% 94%,92% 100%,76% 97%,60% 100%,44% 96%,28% 100%,12% 97%,0% 100%,3% 84%,0% 68%,4% 52%,0% 36%,5% 20%,0% 6%)";
-const photoClip =
-    "polygon(8% 1%,20% 3%,36% 1%,52% 4%,70% 1%,85% 4%,99% 1%,96% 15%,99% 31%,95% 47%,99% 63%,94% 79%,99% 93%,91% 99%,75% 96%,59% 99%,43% 95%,27% 99%,13% 96%,1% 99%,4% 83%,1% 67%,5% 51%,1% 35%,6% 19%,1% 7%)";
-
-const embers = [
-    { top: "8%", left: "14%", size: 46, delay: 0 },
-    { top: "62%", left: "4%", size: 34, delay: 0.6 },
-    { top: "88%", left: "40%", size: 30, delay: 1.1 },
-    { top: "20%", left: "92%", size: 38, delay: 1.7 },
+const pillars = [
+    {
+        icon: Heart,
+        title: "A Personal Approach",
+        desc: "No two manuscripts are treated alike. Every step is shaped around your vision, your goals, and the story only you could tell.",
+    },
+    {
+        icon: Award,
+        title: "Professional Excellence",
+        desc: "From the first edit to the final proof, every stage is held to the same standard — nothing leaves our hands until it's ready.",
+    },
+    {
+        icon: Users,
+        title: "Author Empowerment",
+        desc: "You stay informed and in control at every turn. It's your name on the cover, so it's your decision at every crossroad.",
+    },
 ];
 
-export default function AboutUs() {
+const promises = [
+    {
+        icon: Zap,
+        title: "A Timeline You Can Trust",
+        desc: "We work to the pace your project needs — including expedited tracks for authors on a deadline — without ever cutting corners on quality.",
+    },
+    {
+        icon: Clock,
+        title: "Always Within Reach",
+        desc: "Questions don't keep office hours, and neither do we. Our team is reachable day or night to keep your publishing journey moving smoothly.",
+    },
+    {
+        icon: ShieldCheck,
+        title: "Backed Without Question",
+        desc: "We stand behind our work fully. If you're ever not satisfied, we'll make it right — no fine print, no exceptions.",
+    },
+];
+
+const testimonials = [
+    {
+        quote:
+            "This team turned what could have been an overwhelming process into something genuinely encouraging. They walked me through editing, design, and production with real clarity and patience, and never once lost sight of my original vision for the story.",
+        name: "Beth Ann Roberts",
+        role: "Author",
+    },
+    {
+        quote:
+            "Publishing a book can feel like a lot to take on, but this team made every step feel manageable. I always knew what was coming next, got regular updates, and received thoughtful feedback along the way.",
+        name: "Dennis C. Goss",
+        role: "Author",
+    },
+    {
+        quote:
+            "From the moment I handed over my manuscript, I felt like someone had my back. They took the time to really listen, gave me practical guidance, and delivered a finished book that captured exactly what I was trying to say.",
+        name: "Raven H. M. Blackmore",
+        role: "Author",
+    },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Page component                                                    */
+/*                                                                      */
+/*  Section rhythm (strict alternation, matches Services page):       */
+/*  S1 Hero              — dark  (Craft-bg.png)                       */
+/*  S2 Our Story         — light (about-bg.png)                       */
+/*  S3 What Sets Us Apart— dark  (Craft-bg.png)                       */
+/*  S4 Our Promise       — light (about-bg.png)                       */
+/*  S5 Testimonials      — dark, THE attractive section (Black-bg.jpg)*/
+/*  S6 Closing CTA       — dark  (oxblood accent, quill_ink texture)  */
+/* ------------------------------------------------------------------ */
+
+export default function NavAbout() {
     const shouldReduceMotion = useReducedMotion();
     const initial = shouldReduceMotion ? undefined : "hidden";
     const animate = shouldReduceMotion ? undefined : "visible";
 
     return (
-        <section
-            id="about"
-            className="relative overflow-hidden py-24 lg:py-32"
-        >
-            <div className="absolute inset-0">
-                <div
-                    className="absolute inset-x-0 top-0 h-[60px]"
-                    style={{ clipPath: tornShallow }}
-                />
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        clipPath: tornDeep,
-                        filter: "drop-shadow(0 10px 12px rgba(0,0,0,0.5))",
-                    }}
-                >
-
+        <>
+            {/* S1 — HERO (dark) */}
+            <section id="about-hero" className="relative min-h-[60svh] overflow-hidden bg-[#090807]">
+                <div className="absolute inset-0">
                     <img
-                        src="/images/about-bg.png"
-                        alt="Aged paper texture"
+                        src="/images/Craft-bg.png"
+                        alt=""
                         className="absolute inset-0 h-full w-full object-cover object-center"
                     />
-
-
-
-                    <div className="absolute inset-0 bg-[#f2e2bd]/25 mix-blend-multiply" />
-
-                    <div className="absolute inset-0 bg-[#241408]/38" />
-
-                    <div
-                        className="pointer-events-none absolute inset-0"
-                        style={{
-                            background:
-                                "radial-gradient(140% 100% at 50% 40%, transparent 45%, rgba(20,11,4,0.4) 100%)",
-                        }}
-                    />
+                    <div className="absolute inset-0 bg-ink/60" />
                 </div>
-            </div>
-
-            <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 sm:px-10 lg:grid-cols-2 lg:gap-20 lg:px-10 xl:gap-28">
-                <motion.div
-                    initial={initial}
-                    animate={animate}
-                    variants={fadeUp}
-                    className="relative mx-auto w-full max-w-[440px] lg:mx-0"
-                >
-                    <div className="relative aspect-[4/5] w-full">
-                        <div
-                            className="absolute inset-0 -rotate-3"
-                            style={{
-                                clipPath: charBackingClip,
-                                background:
-                                    "linear-gradient(135deg, #2b1a10 0%, #4a2c14 40%, #1c1109 100%)",
-                                boxShadow: "0 30px 60px -20px rgba(20,10,0,0.55)",
-                            }}
-                        />
-
-                        <div
-                            className="absolute inset-[10px] -rotate-1 overflow-hidden"
-                            style={{ clipPath: photoClip }}
-                        >
-                            <img
-                                src="/images/new_heritage_image.png"
-                                alt="An early portrait from the Wordsworth archive"
-                                className="h-full w-full object-cover"
-                                style={{
-                                    filter:
-                                        "sepia(0.55) contrast(1.12) brightness(0.88) saturate(0.85)",
-                                }}
-                            />
-
-                            <div
-                                className="absolute inset-0"
-                                style={{
-                                    background:
-                                        "radial-gradient(120% 120% at 50% 50%, transparent 52%, rgba(20,9,2,0.35) 78%, rgba(10,4,0,0.85) 100%)",
-                                    mixBlendMode: "multiply",
-                                }}
-                            />
-
-                            <div
-                                className="absolute inset-0"
-                                style={{
-                                    background:
-                                        "radial-gradient(38% 30% at 4% 18%, rgba(216,110,32,0.55), transparent 70%), radial-gradient(30% 24% at 96% 82%, rgba(216,110,32,0.4), transparent 70%)",
-                                    mixBlendMode: "screen",
-                                }}
-                            />
-
-                            <div
-                                className="absolute inset-0 opacity-[0.55] mix-blend-multiply"
-                                style={{ backgroundImage: grainDataUri, backgroundSize: "150px 150px" }}
-                            />
-                        </div>
-
-                        {!shouldReduceMotion &&
-                            embers.map((e, i) => (
-                                <motion.span
-                                    key={i}
-                                    className="absolute rounded-full"
-                                    style={{
-                                        top: e.top,
-                                        left: e.left,
-                                        width: e.size,
-                                        height: e.size,
-                                        background:
-                                            "radial-gradient(circle, rgba(255,153,60,0.5) 0%, rgba(255,153,60,0) 70%)",
-                                        filter: "blur(2px)",
-                                    }}
-                                    animate={{ opacity: [0.25, 0.7, 0.25], scale: [0.9, 1.1, 0.9] }}
-                                    transition={{
-                                        duration: 3.4,
-                                        repeat: Infinity,
-                                        delay: e.delay,
-                                        ease: "easeInOut",
-                                    }}
-                                />
-                            ))}
-                    </div>
-
-                </motion.div>
 
                 <motion.div
                     initial={initial}
                     animate={animate}
                     variants={container}
-                    className="text-center lg:text-left"
+                    className="relative z-10 flex min-h-[60svh] flex-col items-center justify-center px-6 py-24 text-center sm:px-10"
                 >
-                    <motion.div
-                        variants={fadeUp}
-                        className="mb-5 flex items-center justify-center gap-4 lg:justify-start"
-                    >
-                        <span className="h-[2px] w-14 bg-[#5b1818]" />
-                        <span className="font-accent text-[13px] font-bold uppercase tracking-[0.34em] text-[#5b1818]">
+                    <motion.div variants={fadeUp} className="mb-5 flex items-center justify-center gap-4">
+                        <span className="h-px w-10 bg-gold/70" />
+                        <span className="font-accent text-[12px] uppercase tracking-[0.32em] text-gold">
                             Our Story
                         </span>
+                        <span className="h-px w-10 bg-gold/70" />
                     </motion.div>
 
-                    <motion.h2
+                    <motion.h1
                         variants={fadeUp}
-                        className="font-accent text-ink leading-[1.04] [text-shadow:0_2px_14px_rgba(0,0,0,0.45)]"
+                        className="max-w-[820px] font-accent text-[clamp(2rem,5.5vw,3.75rem)] leading-[1.05] text-parchment"
                     >
-                        <span className="block text-[clamp(2rem,4vw,3.4rem)] tracking-[-0.01em]">
-                            A House Built on
-                        </span>
-                        <span className="block text-[clamp(2rem,4vw,3.4rem)] tracking-[-0.01em] text-[#5b1818]">
-                            Ink &amp; Patience
-                        </span>
-                    </motion.h2>
-
-                    <motion.div
-                        variants={fadeUp}
-                        className="mx-auto mt-8 max-w-[540px] font-body text-[1.2rem] font-medium leading-[1.95] text-ink/90 lg:mx-0"
-                    >
-                        <p>
-                            <span className="float-left mr-3 mt-1 font-accent text-[58px] leading-[0.8] text-[#5b1818]">
-                                F
-                            </span>
-                            or over a decade, Wordsworth Publishing has carried
-                            manuscripts the way an old library carries its books —
-                            carefully, patiently, and with the belief that every
-                            story deserves to survive the years. We began in a
-                            single rented room lined with borrowed shelves, and a
-                            conviction that first drafts, however rough, are worth
-                            protecting.
-                        </p>
-                        <p className="mt-5">
-                            That room is long gone. What remains is the same
-                            practice: sitting with an author's pages until the
-                            voice underneath them is unmistakably theirs, then
-                            helping the world hear it.
-                        </p>
-                    </motion.div>
+                        A House Built On <span className="text-gold">Ink &amp; Patience</span>
+                    </motion.h1>
 
                     <motion.p
                         variants={fadeUp}
-                        className="mx-auto mt-7 max-w-[480px] font-accent text-[17px] italic font-black  text-[#5b1818] lg:mx-0"
+                        className="mt-7 max-w-[600px] text-[0.98rem] leading-[1.85] text-parchment/70"
                     >
-                        "Every author's first draft is a spark. We simply help it
-                        catch."
+                        For over a decade, Wordsworth Publishing has carried manuscripts the way an old
+                        library carries its books — carefully, patiently, and with the belief that every
+                        story deserves to survive the years.
                     </motion.p>
-
-                    <motion.div variants={fadeUp} className="mt-11">
-                        <a href="/about" className="hero-btn hero-btn-primary">
-                            <span className="hero-btn-overlay"></span>
-                            <span className="hero-btn-inner">
-                                Read Our Full Story
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M5 19L19 5M19 5H12M19 5V12"
-                                        stroke="currentColor"
-                                        strokeWidth="1.4"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </span>
-                        </a>
-                    </motion.div>
                 </motion.div>
-            </div>
-        </section>
+            </section>
+
+            {/* S2 — OUR STORY (light) */}
+            <section className="relative w-full overflow-hidden bg-parchment py-24 lg:py-32">
+                <div className="absolute inset-0">
+                    <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-parchment/60" />
+                </div>
+
+                <div className="relative z-10 mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-14 px-6 sm:px-10 lg:grid-cols-2 lg:gap-20 lg:px-16">
+                    <motion.div
+                        initial={initial}
+                        whileInView={animate}
+                        viewport={{ once: true, amount: 0.3 }}
+                        variants={fadeIn}
+                        className="relative order-2 aspect-[4/5] overflow-hidden rounded-sm lg:order-1"
+                    >
+                        <img
+                            src="/images/new_heritage_image.png"
+                            alt="An early portrait from the Wordsworth archive"
+                            className="h-full w-full object-cover object-center"
+                            style={{ filter: "sepia(0.4) contrast(1.08) brightness(0.95) saturate(0.9)" }}
+                        />
+                        <div className="pointer-events-none absolute -bottom-5 -right-5 h-full w-full rounded-sm border border-gold/25" />
+                    </motion.div>
+
+                    <motion.div
+                        initial={initial}
+                        whileInView={animate}
+                        viewport={{ once: true, amount: 0.3 }}
+                        variants={container}
+                        className="order-1 lg:order-2"
+                    >
+                        <motion.div variants={fadeUp} className="mb-5 flex items-center gap-4">
+                            <span className="h-px w-10 bg-oxblood/60" />
+                            <span className="font-accent text-[12px] uppercase tracking-[0.32em] text-oxblood">
+                                From First Draft To Final Shelf
+                            </span>
+                        </motion.div>
+
+                        <motion.h2
+                            variants={fadeUp}
+                            className="mb-7 font-accent text-[clamp(1.9rem,3.6vw,2.9rem)] leading-[1.15] text-ink"
+                        >
+                            Unleashing Creativity, <br />
+                            <span className="text-oxblood">Empowering Every Story</span>
+                        </motion.h2>
+
+                        <motion.div variants={fadeUp} className="flex flex-col gap-5 font-body text-[15px] leading-[1.85] text-ink/70">
+                            <p>
+                                We began in a single rented room lined with borrowed shelves, and a
+                                conviction that first drafts, however rough, are worth protecting. Every
+                                manuscript that has crossed our desk since has started the same way — as
+                                an idea worth sharing, and a story only its author could tell.
+                            </p>
+                            <p>
+                                That room is long gone. What remains is the same practice: sitting with an
+                                author's pages until the voice underneath them is unmistakably theirs, then
+                                helping the world hear it. This isn't a factory line — it's a partnership
+                                built around your story, from ghostwriting and editing through to
+                                publishing and marketing.
+                            </p>
+                        </motion.div>
+
+                        <motion.p
+                            variants={fadeUp}
+                            className="mt-7 font-accent text-[16px] italic text-oxblood"
+                        >
+                            "Every author's first draft is a spark. We simply help it catch."
+                        </motion.p>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* S3 — WHAT SETS US APART (dark) */}
+            <section className="relative w-full overflow-hidden bg-ink py-24 lg:py-32">
+                <div className="absolute inset-0">
+                    <img src="/images/Craft-bg.png" alt="" className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-ink/55" />
+                </div>
+
+                <div className="relative z-10 mx-auto max-w-[1200px] px-6 sm:px-10 lg:px-16">
+                    <motion.div
+                        initial={initial}
+                        whileInView={animate}
+                        viewport={{ once: true, amount: 0.4 }}
+                        variants={fadeUp}
+                        className="mx-auto mb-16 max-w-[720px] text-center"
+                    >
+                        <span className="font-accent text-[12px] uppercase tracking-[0.32em] text-gold">
+                            What Sets Us Apart
+                        </span>
+                        <h2 className="mt-4 font-accent text-[clamp(1.9rem,4vw,3rem)] leading-[1.1] text-parchment">
+                            Partners In Your Storytelling
+                        </h2>
+                        <p className="mx-auto mt-5 max-w-[560px] font-body text-[14.5px] leading-[1.8] text-parchment/60">
+                            We walk alongside authors through every stage of the journey, bringing care,
+                            creativity, and professionalism to each step.
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        initial={initial}
+                        whileInView={animate}
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={container}
+                        className="grid grid-cols-1 gap-6 sm:grid-cols-3"
+                    >
+                        {pillars.map(({ icon: Icon, title, desc }) => (
+                            <motion.div
+                                key={title}
+                                variants={fadeUp}
+                                className="rounded-sm border border-parchment/10 bg-parchment/[0.03] p-8 text-center transition-colors duration-300 hover:border-gold/30"
+                            >
+                                <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-gold/40">
+                                    <Icon size={22} className="text-gold" />
+                                </div>
+                                <h3 className="mb-3 font-accent text-[17px] uppercase tracking-[0.03em] text-parchment">
+                                    {title}
+                                </h3>
+                                <p className="font-body text-[14px] leading-[1.7] text-parchment/55">{desc}</p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* S4 — OUR PROMISE (light) */}
+            <section className="relative w-full overflow-hidden bg-parchment py-24 lg:py-32">
+                <div className="absolute inset-0">
+                    <img src="/images/about-bg.png" alt="" className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-parchment/60" />
+                </div>
+
+                <div className="relative z-10 mx-auto max-w-[1200px] px-6 sm:px-10 lg:px-16">
+                    <motion.div
+                        initial={initial}
+                        whileInView={animate}
+                        viewport={{ once: true, amount: 0.4 }}
+                        variants={fadeUp}
+                        className="mx-auto mb-16 max-w-[720px] text-center"
+                    >
+                        <span className="font-accent text-[12px] uppercase tracking-[0.32em] text-oxblood">
+                            Our Promise
+                        </span>
+                        <h2 className="mt-4 font-accent text-[clamp(1.9rem,4vw,3rem)] leading-[1.1] text-ink">
+                            Wherever You Need Us Most, We're There
+                        </h2>
+                    </motion.div>
+
+                    <motion.div
+                        initial={initial}
+                        whileInView={animate}
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={container}
+                        className="grid grid-cols-1 gap-6 sm:grid-cols-3"
+                    >
+                        {promises.map(({ icon: Icon, title, desc }) => (
+                            <motion.div
+                                key={title}
+                                variants={fadeUp}
+                                className="rounded-sm border border-ink/10 bg-white/40 p-8 transition-colors duration-300 hover:border-oxblood/30"
+                            >
+                                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-oxblood/10">
+                                    <Icon size={22} className="text-oxblood" />
+                                </div>
+                                <h3 className="mb-3 font-accent text-[17px] uppercase tracking-[0.03em] text-ink">
+                                    {title}
+                                </h3>
+                                <p className="font-body text-[14px] leading-[1.7] text-ink/60">{desc}</p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* S5 — TESTIMONIALS (dark, THE attractive section — Black-bg.jpg) */}
+            <section className="relative w-full overflow-hidden bg-[#0f0c09] py-24 lg:py-32">
+                <div className="absolute inset-0">
+                    <img src="/images/Black-bg.jpg" alt="" className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-[#0f0c09]/55" />
+                </div>
+                <div
+                    className="pointer-events-none absolute inset-0 opacity-[0.04]"
+                    style={{ backgroundImage: "url('/images/quill_ink.png')", backgroundSize: "200px" }}
+                />
+                <div className="relative z-10 mx-auto max-w-[1200px] px-6 sm:px-10 lg:px-16">
+                    <motion.div
+                        initial={initial}
+                        whileInView={animate}
+                        viewport={{ once: true, amount: 0.4 }}
+                        variants={fadeUp}
+                        className="mx-auto mb-16 max-w-[720px] text-center"
+                    >
+                        <span className="font-accent text-[12px] uppercase tracking-[0.32em] text-gold">
+                            In Their Words
+                        </span>
+                        <h2 className="mt-4 font-accent text-[clamp(1.9rem,4vw,3rem)] leading-[1.1] text-parchment">
+                            What Our Published Authors Say
+                        </h2>
+                    </motion.div>
+
+                    <motion.div
+                        initial={initial}
+                        whileInView={animate}
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={container}
+                        className="grid grid-cols-1 gap-6 sm:grid-cols-3"
+                    >
+                        {testimonials.map(({ quote, name, role }) => (
+                            <motion.div
+                                key={name}
+                                variants={fadeUp}
+                                className="flex flex-col rounded-sm border border-parchment/10 bg-parchment/[0.03] p-8"
+                            >
+                                <Quote size={22} className="mb-5 text-gold/60" />
+                                <p className="flex-1 font-body text-[14px] leading-[1.8] text-parchment/70">
+                                    "{quote}"
+                                </p>
+                                <div className="mt-6 border-t border-parchment/10 pt-4">
+                                    <span className="block font-accent text-[14px] text-parchment">{name}</span>
+                                    <span className="font-body text-[12px] uppercase tracking-[0.1em] text-gold/70">
+                                        {role}
+                                    </span>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* S6 — CLOSING CTA (dark, oxblood accent) */}
+            <section className="relative w-full overflow-hidden bg-oxblood py-20 lg:py-28">
+                <div
+                    className="pointer-events-none absolute inset-0 opacity-[0.06]"
+                    style={{ backgroundImage: "url('/images/quill_ink.png')", backgroundSize: "180px" }}
+                />
+                <motion.div
+                    initial={initial}
+                    whileInView={animate}
+                    viewport={{ once: true, amount: 0.4 }}
+                    variants={fadeUp}
+                    className="relative z-10 mx-auto max-w-[760px] px-6 text-center sm:px-10"
+                >
+                    <h2 className="mb-5 font-accent text-[clamp(1.9rem,4.2vw,3.1rem)] leading-[1.15] text-parchment">
+                        Your Story Deserves To Be Told
+                    </h2>
+                    <p className="mx-auto mb-10 max-w-[480px] font-body text-[15px] leading-[1.75] text-parchment/75">
+                        Every project gets the same care, creativity, and professional attention — because
+                        our goal isn't just to get your book published. It's to make sure it's remembered.
+                    </p>
+                    <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <a href="#contact" className="hero-btn !bg-ink !border-gold-light/40">
+                            <span className="hero-btn-overlay"></span>
+                            <span className="hero-btn-inner">Get Started</span>
+                        </a>
+                        <a href="/portfolio" className="hero-btn hero-btn-secondary !border-parchment/40">
+                            <span className="hero-btn-overlay"></span>
+                            <span className="hero-btn-inner">See Our Work</span>
+                        </a>
+                    </div>
+                </motion.div>
+            </section>
+        </>
     );
 }

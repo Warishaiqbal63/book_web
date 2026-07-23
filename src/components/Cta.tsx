@@ -63,16 +63,16 @@ export default function CTASection() {
                     variants={fadeUp}
                     className="font-accent text-[clamp(1.6rem,3.6vw,2.6rem)] tracking-[0.02em] text-parchment [text-shadow:0_2px_16px_rgba(0,0,0,0.6)]"
                 >
-                    Let&apos;s Write History Together.
+                    Your Story Deserves to Be Told.
                 </motion.h2>
 
                 <motion.p
                     variants={fadeUp}
                     className="mx-auto mt-4 max-w-xl font-body text-[14.5px] leading-[1.85] text-parchment/75 sm:text-[15.5px]"
                 >
-                    Whether you&apos;re writing your first story or your
-                    life&apos;s work, we&apos;re here to help you create a
-                    legacy.
+                    First-time author or seasoned pro, we give your story the
+                    professional treatment it deserves. You write it, we'll
+                    handle the rest.
                 </motion.p>
 
                 <motion.div variants={fadeUp} className="mt-8">
@@ -80,7 +80,7 @@ export default function CTASection() {
                         href="#contact"
                         className="group inline-flex items-center gap-3 border border-gold/50 bg-oxblood px-7 py-3.5 font-body text-[12.5px] font-semibold uppercase tracking-[0.16em] text-parchment transition-colors duration-300 hover:bg-oxblood-light"
                     >
-                        Begin Your Publishing Journey
+                        Get Started
                         <Feather
                             size={15}
                             className="text-gold transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

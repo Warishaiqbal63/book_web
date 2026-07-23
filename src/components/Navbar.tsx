@@ -50,7 +50,7 @@ const navItems = [
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Portfolio", href: "/portfolio" },
-    { label: "Blogs", href: "/Blogs" },
+    { label: "Blog", href: "/Blog" },
     { label: "Contact", href: "/contact" },
 ];
 

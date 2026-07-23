@@ -53,19 +53,19 @@ const fadeUp = {
 
 const navItems = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
+    { label: "About Us", href: "/about" },
+    { label: "Our Work", href: "/portfolio" },
     { label: "Services", href: "/services" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Blogs", href: "/Blogs" },
+    { label: "Testimonials", href: "/#testimonials" },
     { label: "Contact", href: "/contact" },
 ];
 
 const serviceLinks = [
-    { label: "Book Writing", href: "/InnerServices/book-writing" },
-    { label: "Ghostwriting", href: "/InnerServices/ghostwriting" },
-    { label: "Book Editing", href: "/InnerServices/book-editing" },
-    { label: "Book Cover Design", href: "/InnerServices/book-cover-design" },
     { label: "Book Publishing", href: "/InnerServices/book-publishing" },
+    { label: "Book Editing", href: "/InnerServices/book-editing" },
+    { label: "Ghostwriting", href: "/InnerServices/ghostwriting" },
+    { label: "Book Cover Design", href: "/InnerServices/book-cover-design" },
+    { label: "Book Marketing", href: "/InnerServices/book-marketing" },
 ];
 
 const socials = [
@@ -127,11 +127,11 @@ export default function Footer() {
                 >
                     <div>
                         <span className="font-accent text-[13px] font-bold uppercase tracking-[0.34em] text-gold">
-                            Join Our Reading Circle
+                            Stay In The Loop
                         </span>
                         <p className="mt-3 max-w-sm font-body text-[1rem] leading-[1.7] text-parchment/70">
-                            New releases, author stories, and the occasional
-                            good sentence — straight to your inbox.
+                            Subscribe for publishing tips, author resources,
+                            and updates from OakMont Publications.
                         </p>
                     </div>
 
@@ -168,22 +168,22 @@ export default function Footer() {
                     <motion.div variants={fadeUp}>
                         <a href="/" className="flex items-center gap-3">
                             <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-gold font-accent text-xl text-gold">
-                                W
+                                O
                             </span>
                             <span className="leading-tight">
                                 <span className="block font-accent text-lg tracking-[0.15em] text-parchment">
-                                    WORDSWORTH
+                                    OAKMONT
                                 </span>
                                 <span className="block font-body text-[10px] tracking-[0.35em] text-gold">
-                                    PUBLISHING
+                                    PUBLICATIONS
                                 </span>
                             </span>
                         </a>
 
                         <p className="mt-5 max-w-xs font-body text-[14px] leading-[1.8] text-parchment/60">
-                            Rooted in the literary traditions of Old London,
-                            helping authors turn their ideas into books that
-                            inspire generations.
+                            Your story, our expertise. We help authors at
+                            every stage of the journey, from first draft to
+                            final shelf.
                         </p>
 
                         <div className="mt-6 flex items-center gap-3">
@@ -236,25 +236,25 @@ export default function Footer() {
                             <li className="flex items-start gap-3">
                                 <Phone size={16} className="mt-0.5 flex-none text-gold/70" />
                                 <a
-                                    href="tel:1112220000"
+                                    href="tel:1231231234"
                                     className="font-body text-[14px] text-parchment/70 transition-colors hover:text-gold"
                                 >
-                                    (111) 222-0000
+                                    (123) 123-1234
                                 </a>
                             </li>
                             <li className="flex items-start gap-3">
                                 <Mail size={16} className="mt-0.5 flex-none text-gold/70" />
                                 <a
-                                    href="mailto:info@wordsworthpublishing.com"
+                                    href="mailto:hello@oakmontpublications.com"
                                     className="font-body text-[14px] text-parchment/70 transition-colors hover:text-gold"
                                 >
-                                    info@wordsworthpublishing.com
+                                    hello@oakmontpublications.com
                                 </a>
                             </li>
                             <li className="flex items-start gap-3">
                                 <MapPin size={16} className="mt-0.5 flex-none text-gold/70" />
                                 <span className="font-body text-[14px] leading-snug text-parchment/70">
-                                    14 Fenwick Row, Bloomsbury, London WC1
+                                    Proudly serving authors across the United States
                                 </span>
                             </li>
                         </ul>
@@ -263,7 +263,7 @@ export default function Footer() {
             </div>
 
             {/* Giant sliding wordmark — an infinite marquee (two copies back-to-back)
-                so "PUBLISHING" is never clipped by the container; it simply keeps
+                so "PUBLICATIONS" is never clipped by the container; it simply keeps
                 scrolling into full view rather than sitting cropped in one spot. */}
             <div className="relative z-10 overflow-hidden border-t border-gold/10 py-2">
                 <motion.div
@@ -276,7 +276,7 @@ export default function Footer() {
                             key={i}
                             className="select-none px-8 font-accent text-[13vw] font-bold leading-none tracking-[-0.02em] text-parchment/[0.09] sm:text-[9vw]"
                         >
-                            WORDSWORTH PUBLISHING
+                            OAKMONT PUBLICATIONS
                         </span>
                     ))}
                 </motion.div>
@@ -284,7 +284,7 @@ export default function Footer() {
 
             <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-6 sm:flex-row sm:justify-between sm:px-10 lg:px-10">
                 <p className="font-body text-[13px] text-parchment/50">
-                    © {new Date().getFullYear()} Wordsworth Publishing. All rights reserved.
+                    © {new Date().getFullYear()} OakMont Publications. All rights reserved.
                 </p>
 
                 <div className="flex items-center gap-6">
@@ -298,7 +298,7 @@ export default function Footer() {
                         href="/terms"
                         className="font-body text-[13px] text-parchment/50 transition-colors hover:text-gold"
                     >
-                        Terms of Service
+                        Terms &amp; Conditions
                     </a>
 
                     <motion.button

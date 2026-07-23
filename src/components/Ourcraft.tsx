@@ -33,23 +33,23 @@ const tornShallow =
 const craftItems = [
     {
         icon: "/images/globe.png",
-        title: "Worldwide Distribution",
-        text: "Every title we publish is placed in front of readers well beyond one city or one shelf.",
+        title: "Editing & Proofreading",
+        text: "We refine your manuscript line by line, sharpening clarity and flow until every sentence reads clean and error-free.",
     },
     {
         icon: "/images/quill_ink.png",
-        title: "Hand-Guided Editing",
-        text: "No manuscript passes through automated rewriting. An editor reads every line, every time.",
+        title: "Cover Design",
+        text: "We build a striking, professional cover made to stop readers mid-scroll and pull them in.",
     },
     {
         icon: "/images/book_closed.png",
-        title: "Bespoke Cover Design",
-        text: "A cover is commissioned to fit the book it belongs to, never pulled from a template library.",
+        title: "Publishing",
+        text: "We take your finished manuscript and turn it into a real, published book — ready for shelves and online stores alike.",
     },
     {
         icon: "/images/book_open.png",
-        title: "Every Page, Perfected",
-        text: "Typesetting and formatting are checked page by page before a single copy is printed.",
+        title: "Marketing",
+        text: "We craft marketing strategies tailored to your book, built to reach the readers who'll love it most.",
     },
 ];
 
@@ -106,13 +106,13 @@ export default function OurCraft() {
                     <div className="mb-5 flex items-center justify-center gap-4">
                         <span className="h-px w-14 bg-gold" />
                         <span className="font-accent text-[13px] uppercase tracking-[0.34em] text-gold">
-                            Our Craft
+                            Path To Publication
                         </span>
                         <span className="h-px w-14 bg-gold" />
                     </div>
 
                     <h2 className="font-accent text-[clamp(1.9rem,4vw,3rem)] leading-[1.1] text-parchment">
-                        What We Bring To Every Book
+                        Just Four Steps
                     </h2>
 
                     <div className="mt-6 flex items-center justify-center gap-4">

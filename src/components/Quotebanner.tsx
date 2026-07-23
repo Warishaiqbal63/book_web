@@ -71,13 +71,14 @@ export default function QuoteBanner() {
 
                 <motion.div variants={fadeUp} className="max-w-[560px] lg:flex-1">
                     <p className="font-black text-[1.2rem] lg:text-[1.4rem] italic leading-[1.75] text-ink sm:text-[1.4rem]">
-                        "Wordsworth Publishing didn't just publish my book—
-                        they believed in my story. They treated it with the
-                        care and respect every author dreams of."
+                        "This team turned an overwhelming process into
+                        something genuinely encouraging — walking me through
+                        editing, design, and production with real clarity,
+                        patience, and care for my vision."
                     </p>
 
                     <span className="mt-5 block font-extrabold text-[16px] uppercase tracking-[0.28em] text-[#5b1818]">
-                        — Amelia Hartman, Author
+                        — Beth Ann Roberts, Author
                     </span>
 
                     <div className="mt-6 flex items-center justify-center gap-2">
@@ -113,7 +114,7 @@ export default function QuoteBanner() {
                                 fontSize="15"
                                 fill="var(--color-gold-light)"
                             >
-                                W
+                                O
                             </text>
                         </svg>
                     </span>
