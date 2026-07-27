@@ -17,7 +17,6 @@ import About from "./components/About"
 import Portfolio from "./components/Portfolio"
 import BlogPage from "./components/Blog"
 
-import ScrollToTop from "./components/ScrollToTop"
 import RouteScrollReset from "./components/RouteScrollReset"
 
 
@@ -28,12 +27,10 @@ function HomePage() {
     <>
       <Hero />
       <AboutUs/>
-      <ScrollToTop />
       <OurCraft />
       <LegacyStats />
       <Blackfolio />
       <QuoteBanner />
-      <RouteScrollReset/>
       <CTASection />
       <Contact />
       <Faq />
@@ -44,6 +41,7 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
+      <RouteScrollReset />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
