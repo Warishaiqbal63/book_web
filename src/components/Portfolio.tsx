@@ -2,7 +2,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence, useReducedMotion, type Variants } from "motion/react";
 import {
-    Play, X, BookOpen, PenTool, Palette, BarChart,
+    Play, X, BookOpen, PenTool,
     Sword, Heart, Rocket, GraduationCap, Baby, Ghost, ArrowRight,
 } from "lucide-react";
 
@@ -320,7 +320,7 @@ export default function NavPortfolio() {
                         </span>
 
                         <span className="block text-[clamp(1.3rem,4.6vw,3.2rem)] tracking-[-0.01em] text-[#c59d4d]">
-                            Of Every Story We've Shelved.
+                            Of Every Story We&apos;ve Shelved.
                         </span>
                     </motion.h1>
 
@@ -331,8 +331,8 @@ export default function NavPortfolio() {
                             textShadow: "0 2px 10px rgba(0,0,0,0.8)",
                         }}
                     >
-                        A closer look at the manuscripts we've edited, the covers we've designed,
-                        and the authors we've carried from first draft to final shelf.
+                        A closer look at the manuscripts we&apos;ve edited, the covers we&apos;ve designed,
+                        and the authors we&apos;ve carried from first draft to final shelf.
                     </motion.p>
 
                     <motion.div
@@ -383,7 +383,7 @@ export default function NavPortfolio() {
                             <GoldDivider label="Shelf-Worthy Work" />
                         </motion.div>
                         <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-accent text-[clamp(1.6rem,4.2vw,3.4rem)] leading-[1.02] tracking-[-0.01em] text-[#241408]">
-                            Stories We're <span className="text-[#5b1818]">Proud Of</span>
+                            Stories We&apos;re <span className="text-[#5b1818]">Proud Of</span>
                         </motion.h2>
                     </div>
 
@@ -447,7 +447,7 @@ export default function NavPortfolio() {
                             <GoldDivider label="In Motion" />
                         </motion.div>
                         <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-accent text-[clamp(1.6rem,4.2vw,3.4rem)] leading-[1.02] tracking-[-0.01em] text-[#f4ecde]">
-                            Book Trailers <span className="text-[#c59d4d]">We've Produced</span>
+                            Book Trailers <span className="text-[#c59d4d]">We&apos;ve Produced</span>
                         </motion.h2>
                     </div>
 
@@ -544,13 +544,13 @@ export default function NavPortfolio() {
                         Your Book Could Be Next On This Shelf
                     </h2>
                     <p className="font-body mx-auto mb-8 max-w-[520px] text-[0.9rem] leading-[1.7] text-parchment/80 sm:mb-10 sm:text-[1rem]">
-                        From first draft to final shelf, we'll carry your story the same way
-                        we've carried every one on this page.
+                        From first draft to final shelf, we&apos;ll carry your story the same way
+                        we&apos;ve carried every one on this page.
                     </p>
                     <a href="#contact" className="hero-btn !bg-ink !border-gold-light/40 mx-auto">
                         <span className="hero-btn-overlay" />
                         <span className="hero-btn-inner">
-                            Start Your Book's Journey
+                            Start Your Book&apos;s Journey
                             <ArrowRight size={15} strokeWidth={1.6} />
                         </span>
                     </a>
