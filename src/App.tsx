@@ -16,8 +16,12 @@ import InnerServicePage from "./components/InnerServices/Inner;servicepage"
 import About from "./components/About"
 import Portfolio from "./components/Portfolio"
 import BlogPage from "./components/Blog"
+<<<<<<< HEAD
 import ScrollToTop from "./components/ScrollToTop"
 import RouteScrollReset from "./components/RouteScrollReset"
+=======
+
+>>>>>>> 7a00781104e6fb2c86837be35b164d9196802697
 
 // The homepage keeps all sections stacked together, exactly as before.
 function HomePage() {
@@ -25,7 +29,10 @@ function HomePage() {
     <>
       <Hero />
       <AboutUs/>
+<<<<<<< HEAD
       <ScrollToTop />
+=======
+>>>>>>> 7a00781104e6fb2c86837be35b164d9196802697
       <OurCraft />
       <LegacyStats />
       <Blackfolio />
@@ -40,7 +47,10 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
+<<<<<<< HEAD
       <RouteScrollReset />
+=======
+>>>>>>> 7a00781104e6fb2c86837be35b164d9196802697
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
